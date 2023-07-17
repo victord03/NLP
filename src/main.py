@@ -27,27 +27,23 @@ def remove_semantics(text: str) -> str:
     return ' '.join(new_text)
 
 
-def test_remove_empty_spaces(text: str) -> str:
-    new_text = str()
-
-    for char in text:
-        if not char.isspace():
-            new_text += char
-
-    return new_text
-
-
 def words_into_list(text: str) -> list:
-
-    new_text = str()
-
-    for word in text:
-        if word:
-            new_text.append(word)
-
     return text.split(' ')
 
 
+def test_remove_empty_spaces(text: str) -> list:
+
+    words = words_into_list(text)
+    words_copy = words.copy()
+
+    count = 0
+
+    for index, element in enumerate(words):
+        if not element:
+            del words_copy[index - count]
+            count += 1
+
+    return words_copy
 
 
 def main():
