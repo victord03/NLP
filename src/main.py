@@ -1,4 +1,16 @@
 
+
+def split_text_in_sentences(text: str) -> list[str]:
+
+    sentences = text.split('\n')
+    stripped_sentences = list()
+
+    for element in sentences:
+        stripped_sentences.append(element.strip())
+
+    return test_remove_empty_spaces(stripped_sentences)
+
+
 def remove_punctuation(text: str) -> str:
     """Removed all provided punctuation from the text."""
 
@@ -33,20 +45,19 @@ def words_into_list(text: str) -> list[str]:
     return text.split(' ')
 
 
-def test_remove_empty_spaces(text: str) -> list[str]:
+def test_remove_empty_spaces(sentences: list[str]) -> list[str]:
     """Removes empty elements from a list of text split into words (more than one white space)."""
 
-    words = words_into_list(text)
-    words_copy = words.copy()
+    sentences_copy = sentences.copy()
 
     count = 0
 
-    for index, element in enumerate(words):
+    for index, element in enumerate(sentences):
         if not element:
-            del words_copy[index - count]
+            del sentences_copy[index - count]
             count += 1
 
-    return words_copy
+    return sentences_copy
 
 
 def find_verbs(words: list[str]) -> list[str]:

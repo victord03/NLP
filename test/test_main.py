@@ -1,6 +1,17 @@
 from src import main
 
 
+def test_split_text_in_sentences():
+
+    text = '''of Great Britain. 
+
+ In late 1838, John '''
+
+    expected = ['of Great Britain.', 'In late 1838, John']
+
+    assert main.split_text_in_sentences(text) == expected
+
+
 def test_remove_punctuation():
 
     text = 'While punctuation is great, it is important - imperative - to remove it for sentiment analysis!'
@@ -27,7 +38,7 @@ def test_words_into_list():
 
 def test_remove_empty_spaces():
 
-    text = 'While punctuation is  great is important  imperative remove    sentiment analysis'
+    text = ['While', 'punctuation', 'is', '', 'great', 'is', 'important', '', 'imperative', 'remove', '', 'sentiment', 'analysis']
     expected = ['While', 'punctuation', 'is', 'great','is', 'important','imperative','remove','sentiment','analysis']
 
     assert main.test_remove_empty_spaces(text) == expected
